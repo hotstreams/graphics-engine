@@ -727,7 +727,7 @@ EffectInstance* inst;
                                 "mat_color.rgb *= fres * vec3(33.0 / 255.0 * 15.0f, 99.0 / 255.0 * 15.0f, 1000.0 / 255.0 * 25.0f);")
             .setVertexSnippet("vertex_position += sin(getParticleTime() * vertex_offset_freq) * getMeshNormal() * vertex_offset_dir *texture(noise, getParticleTime() + uv).r;")
 
-            .setGlobalSnippet("#include \"../functions/fresnel.glsl\"")
+            .setGlobalSnippet("#include \"../expressions/fresnel.glsl\"")
         .build();
 
         materialBuilder.setName("shield_hit")

@@ -15,7 +15,8 @@ size_t AnimationNode::findPositionKeyframe(double anim_time) const {
             return i;
         }
     }
-    throw std::out_of_range("no position keyframe for time " + std::to_string(anim_time));
+    return positions.size() - 1;
+//    throw std::out_of_range("no position keyframe for time " + std::to_string(anim_time));
 }
 
 size_t AnimationNode::findRotationKeyframe(double anim_time) const {
@@ -23,7 +24,8 @@ size_t AnimationNode::findRotationKeyframe(double anim_time) const {
         if (anim_time <= rotations[i + 1].time)
             return i;
     }
-    throw std::out_of_range("no rotation keyframe for time " + std::to_string(anim_time));
+	return rotations.size() - 1;
+//    throw std::out_of_range("no rotation keyframe for time " + std::to_string(anim_time));
 }
 
 size_t AnimationNode::findScalingKeyframe(double anim_time) const {
@@ -31,7 +33,8 @@ size_t AnimationNode::findScalingKeyframe(double anim_time) const {
         if (anim_time <= scales[i + 1].time)
             return i;
     }
-    throw std::out_of_range("no scaling keyframe for time " + std::to_string(anim_time));
+    return scales.size() - 1;
+//    throw std::out_of_range("no scaling keyframe for time " + std::to_string(anim_time));
 }
 
 glm::vec3 AnimationNode::positionLerp(double anim_time) const {

@@ -11,6 +11,7 @@ namespace Limitless {
 
     class TextInstance {
     private:
+        bool hidden {false};
         TextModel text_model;
         std::string text;
         glm::vec2 position;
@@ -20,7 +21,6 @@ namespace Limitless {
 
         std::optional<TextModel> selection_model {};
         glm::vec4 selection_color {};
-        bool hidden {};
 
         glm::mat4 model_matrix {1.0f};
         void calculateModelMatrix() noexcept;

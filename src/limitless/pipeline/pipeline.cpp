@@ -4,6 +4,7 @@
 #include <limitless/core/uniform_setter.hpp>
 #include <limitless/pipeline/render_pass.hpp>
 #include <limitless/core/framebuffer.hpp>
+#include <limitless/pipeline/sceneupdate_pass.hpp>
 
 using namespace Limitless;
 
@@ -12,6 +13,9 @@ void Pipeline::draw(Context& context, const Assets& assets, Scene& scene, Camera
 
     for (const auto& pass : passes) {
         pass->update(scene, instances, context, camera);
+        if (dynamic_cast<Limitless::SceneUpdatePass*>(pass.get())) {
+            instances = scene.getWrappers();
+        }
     }
 
     UniformSetter setter;

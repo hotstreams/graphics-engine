@@ -12,6 +12,7 @@ namespace Limitless::fx {
         explicit ColorByLife(std::unique_ptr<Distribution<glm::vec4>> _distribution) noexcept
             : Module<Particle>(ModuleType::ColorByLife)
             , distribution {std::move(_distribution)} {}
+
         ~ColorByLife() override = default;
 
         ColorByLife(const ColorByLife& module)

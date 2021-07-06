@@ -11,6 +11,7 @@ namespace Limitless::fx {
         explicit InitialSize(std::unique_ptr<Distribution<float>> _distribution) noexcept
             : Module<Particle>(ModuleType::InitialSize)
             , distribution{std::move(_distribution)} {}
+
         ~InitialSize() override = default;
 
         InitialSize(const InitialSize& module)

@@ -35,8 +35,13 @@ void ShaderStorage::add(ShaderPass material_type, ModelShader model_type, uint64
     std::unique_lock lock(mutex);
     const auto result = material_shaders.emplace(ShaderKey{material_type, model_type, material_index}, std::move(program));
     if (!result.second) {
-        throw shader_storage_error{"Shader already contains"};
+        throw shader_storage_error{"Shader already exists"};
     }
+}
+
+bool ShaderStorage::contains(const std::string& shader_name) noexcept {
+	std::unique_lock lock(mutex);
+	return shaders.find(shader_name) != shaders.end();
 }
 
 bool ShaderStorage::contains(ShaderPass material_type, ModelShader model_type, uint64_t material_index) noexcept {
@@ -111,8 +116,4 @@ void ShaderStorage::add(const ShaderStorage& other) {
     for (auto&& [key, value] : other.emitters) {
         emitters.emplace(key, value);
     }
-}
-
-bool ShaderStorage::contains(const std::string& name) noexcept {
-    return shaders.find(name) != shaders.end();
 }

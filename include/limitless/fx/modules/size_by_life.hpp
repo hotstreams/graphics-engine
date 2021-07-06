@@ -6,7 +6,8 @@ namespace Limitless::fx {
     template<typename Particle>
     class SizeByLife : public Module<Particle> {
     private:
-        std::unique_ptr<Distribution<float>> distribution;
+        typedef float DistributionType;
+        std::unique_ptr<Distribution<DistributionType>> distribution;
     public:
         explicit SizeByLife(std::unique_ptr<Distribution<float>> _distribution) noexcept
             : Module<Particle>(ModuleType::SizeByLife)
@@ -37,7 +38,8 @@ namespace Limitless::fx {
     template<>
     class SizeByLife<MeshParticle> : public Module<MeshParticle> {
     private:
-        std::unique_ptr<Distribution<glm::vec3>> distribution;
+        typedef glm::vec3 DistributionType;
+        std::unique_ptr<Distribution<DistributionType>> distribution;
     public:
         explicit SizeByLife(std::unique_ptr<Distribution<glm::vec3>> _distribution) noexcept
             : Module<MeshParticle>(ModuleType::SizeByLife)

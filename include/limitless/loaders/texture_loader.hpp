@@ -37,6 +37,7 @@ namespace Limitless {
         TextureLoaderFlags(Origin _origin) noexcept : origin { _origin } {}
         TextureLoaderFlags(Origin _origin, Space _space) noexcept : origin { _origin }, space {_space} {}
         TextureLoaderFlags(Filter _filter) noexcept : filter { _filter } {}
+        TextureLoaderFlags(Filter _filter, Texture::Wrap _wrap) noexcept : filter {_filter}, wrapping {_wrap} {}
         TextureLoaderFlags(Space _space) noexcept : space { _space } {}
     };
 

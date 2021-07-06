@@ -37,7 +37,7 @@ namespace Limitless {
         std::map<ShaderKey, std::shared_ptr<ShaderProgram>> material_shaders;
         std::map<fx::UniqueEmitterShaderKey, std::shared_ptr<ShaderProgram>> emitters;
 
-        std::mutex mutex;
+        mutable std::mutex mutex;
     public:
         ShaderStorage() = default;
         ~ShaderStorage() = default;

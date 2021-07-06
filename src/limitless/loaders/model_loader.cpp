@@ -127,12 +127,13 @@ std::shared_ptr<AbstractMesh> ModelLoader::loadMesh(
         std::unordered_map<std::string, uint32_t>& bone_map,
         const ModelLoaderFlags& flags) {
     static auto i = 0;
+	static size_t unnamed_mesh_index = 0;
     auto mesh_name = m->mName.length != 0 ? m->mName.C_Str() : std::to_string(i++);
     std::string name = path.string() + PATH_SEPARATOR + mesh_name;
 
-//    if (flags.find(ModelLoaderFlag::GenerateUniqueMeshNames) != flags.end()) {
-//        name += std::to_string(unnamed_mesh_index++);
-//    }
+    if (flags.find(ModelLoaderFlag::GenerateUniqueMeshNames) != flags.end()) {
+        name += std::to_string(unnamed_mesh_index++);
+    }
 
     if (assets.meshes.contains(name)) {
         return assets.meshes.at(name);

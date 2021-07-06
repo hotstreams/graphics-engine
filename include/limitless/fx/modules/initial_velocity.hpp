@@ -11,6 +11,7 @@ namespace Limitless::fx {
         explicit InitialVelocity(std::unique_ptr<Distribution<glm::vec3>> _distribution) noexcept
             : Module<Particle>(ModuleType::InitialVelocity)
             , distribution {std::move(_distribution)} {}
+
         ~InitialVelocity() override = default;
 
         InitialVelocity(const InitialVelocity& module)
